@@ -20,12 +20,11 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
 	protected DepartmentService departmentService;
 	@Resource
 	protected UserService userService;
-	
+
 	protected T model;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public BaseAction(){
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+	public BaseAction() {
 		// 获取model 的类型信息
 		ParameterizedType pt = (ParameterizedType) this.getClass()
 				.getGenericSuperclass();

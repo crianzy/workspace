@@ -32,7 +32,7 @@
 <!--显示表单内容-->
 <div id="MainArea">
     <!-- <form action="list.html"> -->
-    <s:form action="roleAction_edit">
+    <s:form action="roleAction_%{id == null ? 'add' : 'edit'}">
     	<s:hidden name="id"></s:hidden>
         <div class="ItemBlock_Title1"><!-- 信息说明<DIV CLASS="ItemBlock_Title1">
         	<IMG BORDER="0" WIDTH="4" HEIGHT="7" SRC="style/blue/images/item_point.gif" /> 岗位信息 </DIV>  -->

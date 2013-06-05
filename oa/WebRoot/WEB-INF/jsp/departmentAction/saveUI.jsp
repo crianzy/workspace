@@ -49,10 +49,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </td> -->
                     </tr>
                     <tr><td>部门名称</td>
-                        <td><input type="text" name="name" class="InputStyle"/> *</td>
+                        <td><input type="text" name="name" class="InputStyle" value="${name }"/> *</td>
                     </tr>
                     <tr><td>职能说明</td>
-                        <td><textarea name="description" class="TextareaStyle"></textarea></td>
+                        <td><textarea name="description" class="TextareaStyle">${description }</textarea></td>
                     </tr>
                 </table>
             </div>

@@ -19,7 +19,6 @@ public class RoleAction extends BaseAction<Role> {
 	public String list() throws Exception {
 		List<Role> roleList = roleService.findAll();
 		ActionContext.getContext().put("roleList", roleList);
-		System.out.println("list = " + roleList);
 		return "list";
 	}
 
