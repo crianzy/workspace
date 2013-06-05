@@ -47,11 +47,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <tr class="TableDetail1 template">
                 <td>${loginName}&nbsp;</td>
                 <td>${name}&nbsp;</td>
-                <td><%-- ${department.name} --%>&nbsp;</td>
+                <td>${department.name}&nbsp;</td>
                 <td>
-                	<%-- <s:iterator value="roles">
+                	<s:iterator value="roles">
                 		${name}&nbsp;
-                	</s:iterator> --%>
+                	</s:iterator>
                 	&nbsp;
                 </td>
                 <td>${description}&nbsp;</td>

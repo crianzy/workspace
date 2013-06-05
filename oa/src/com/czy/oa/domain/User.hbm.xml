@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="com.czy.oa.domain">
+<hibernate-mapping package="com.czy.oa.domain" default-lazy="false">
 	<class name="User">
 		<id name="id">
 			<generator class="native"></generator>
@@ -12,7 +12,7 @@
 		<property name="loginName" unique="true"></property>
 		<property name="password"></property>
 		<property name="gender"></property>
-		<property name="phoneName"></property>
+		<property name="phoneNumber"></property>
 		<property name="email"></property>
 		<property name="description"></property>
 		

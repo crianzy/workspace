@@ -2,6 +2,7 @@ package com.czy.oa.base;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -42,14 +43,14 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		return (T) getSession().get(clazz, id);
 	}
 
-	public List<T> getByids(Serializable[] ids) {
+	public List<T> getByids(Long[] ids) {
 		if (ids == null || ids.length == 0) {
 			return Collections.EMPTY_LIST;
 		}
 		List<T> list = null;
 		String hql = " FROM " + clazz.getSimpleName() + " WHERE  id IN(:ids)";
 		list = getSession().createQuery(hql)//
-				.setParameter("ids", ids)//
+				.setParameterList("ids", ids)//
 				.list();
 		return list;
 	}

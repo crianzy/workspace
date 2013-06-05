@@ -1,5 +1,9 @@
 package com.czy.oa.enviroment.test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
@@ -33,10 +37,10 @@ public class TestHibernate {
 		User user3 = new User();
 		user1.setName("user1");
 		user1.setLoginName("loginName1");
-		
+
 		user2.setName("user2");
 		user2.setLoginName("loginName2");
-		
+
 		user3.setName("user3");
 		user3.setLoginName("loginName3");
 
@@ -54,7 +58,7 @@ public class TestHibernate {
 		department2.setDescription("department 2");
 		department2.setParent(department1);
 		department2.getUsers().add(user2);
-		
+
 		department3.setName("department 3");
 		department3.setDescription("department 3");
 		department3.setParent(department1);
@@ -64,10 +68,10 @@ public class TestHibernate {
 		Role role2 = new Role();
 		role1.setName("role1");
 		role2.setName("role2");
-		
+
 		user3.getRoles().add(role1);
 		user3.getRoles().add(role2);
-		
+
 		session.save(user1);
 		session.save(user2);
 		session.save(user3);
@@ -77,6 +81,32 @@ public class TestHibernate {
 		session.save(role1);
 		session.save(role2);
 
+		// ------------------------------
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	/*
+	 * getSession().createQuery(// "FROM " + clazz.getSimpleName() +
+	 * " WHERE id IN(:ids)")// .setParameterList("ids", ids)// .list();
+	 */
+
+	@SuppressWarnings("unchecked")
+	@Test
+	public void testGetByIds() {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		// ------------------------------
+		long[] ids = { 1, 2, 3, 4 };
+		List idss = Arrays.asList(ids);
+		System.out.println(idss);
+		System.out.println(ids);
+		String hql = "FROM Role WHERE id IN(:ids)";
+		List<Role> roles = session.createQuery(hql).setParameterList("ids", idss).list();
+		for (Role role : roles) {
+			System.out.println(role.getName() + "  ");
+		}
 		// ------------------------------
 		session.getTransaction().commit();
 		session.close();

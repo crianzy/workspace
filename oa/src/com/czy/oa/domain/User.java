@@ -10,7 +10,7 @@ public class User {
 	private String loginName;
 	private String password;
 	private String gender;
-	private String phoneName;
+	private String phoneNumber;
 	private String email;
 	private String description;
 
@@ -58,12 +58,13 @@ public class User {
 		this.gender = gender;
 	}
 
-	public String getPhoneName() {
-		return phoneName;
+
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setPhoneName(String phoneName) {
-		this.phoneName = phoneName;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getEmail() {
