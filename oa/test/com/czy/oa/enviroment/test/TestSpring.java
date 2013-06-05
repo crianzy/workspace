@@ -34,16 +34,6 @@ public class TestSpring {
 	
 	@Test
 	public void testGetByIds(){
-		long[] ids = {1,2,3,4};
-		for (long id : ids) {
-			System.out.print(id+"   ");
-		}
-		System.out.println();
-		RoleService roleService = (RoleService) ac.getBean("roleServiceImpl");
-		List<Role> roleList = roleService.getByids(ids);
-		for (Role role : roleList) {
-			System.out.println(role.getName() +"     ");
-		}
 		
 	}
 }
