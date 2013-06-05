@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.devMode" value="true" />
+
+    <package name="default" namespace="/" extends="struts-default">
+
+        <default-action-ref name="index" />
+
+
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+
+        <action name="index" class="indexAction">
+        	<result>/index.jsp</result>
+        </action>
+        
+        <!-- 岗位管理 -->
+        <action name="roleAction_*" class="roleAction" method="{1}">
+        	<result name="list">/WEB-INF/jsp/roleAction/list.jsp</result>
+        	<result name="addUI">/WEB-INF/jsp/roleAction/addUI.jsp</result>
+        	<result name="editUI">/WEB-INF/jsp/roleAction/editUI.jsp</result>
+        	<result name="toList" type="redirectAction">roleAction_list</result>
+        </action>
+        
+        <!-- 部门管理 -->
+        <action name="departmentAction_*" class="departmentAction" method="{1}">
+        	<result name="list">/WEB-INF/jsp/departmentAction/list.jsp</result>
+        	<result name="addUI">/WEB-INF/jsp/departmentAction/addUI.jsp</result>
+        	<result name="editUI">/WEB-INF/jsp/departmentAction/editUI.jsp</result>
+        	<result name="toList" type="redirectAction">departmentAction_list</result>
+        </action>
+    </package>
+
+
+    <!-- Add packages here -->
+
+</struts>
