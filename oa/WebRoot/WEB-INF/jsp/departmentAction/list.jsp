@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <tbody id="TableData" class="dataContainer" datakey="departmentList">
         	<s:iterator value="#departmentList">
 	        	<tr class="TableDetail1 template">
-	        		<td><a href="#">${name } &nbsp;</a></td>
+	        		<td><a href="departmentAction_list?id=${id }">${name } &nbsp;</a></td>
 	        		<td>${parent.name } &nbsp;</td>
 	        		<td>${description } &nbsp;</td>
 	        		<td>

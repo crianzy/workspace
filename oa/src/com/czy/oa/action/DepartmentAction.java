@@ -17,8 +17,14 @@ public class DepartmentAction extends BaseAction<Department> {
 
 	/** ап╠М */
 	public String list() throws Exception {
-		List<Department> departmentList = departmentService.findAll();
-		ActionContext.getContext().put("departmentList", departmentList);
+		List<Department> departmentList = null;
+		if (model.getId() == null) {
+			departmentList = departmentService.findTopList();
+			ActionContext.getContext().put("departmentList", departmentList);
+		}else{
+			departmentList = departmentService.findChildren(model.getId());
+			ActionContext.getContext().put("departmentList", departmentList);
+		}
 		System.out.println(departmentList);
 		return "list";
 	}
