@@ -33,6 +33,7 @@
 	<mapping resource="com/czy/oa/domain/User.hbm.xml" />
 	<mapping resource="com/czy/oa/domain/Role.hbm.xml" />
 	<mapping resource="com/czy/oa/domain/Department.hbm.xml" />
+	<mapping resource="com/czy/oa/domain/Privilege.hbm.xml" />
 </session-factory>
 
 </hibernate-configuration>

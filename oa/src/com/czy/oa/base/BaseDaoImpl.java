@@ -2,7 +2,6 @@ package com.czy.oa.base;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		return (T) getSession().get(clazz, id);
 	}
 
-	public List<T> getByids(Long[] ids) {
+	public List<T> getByIds(Long[] ids) {
 		if (ids == null || ids.length == 0) {
 			return Collections.EMPTY_LIST;
 		}

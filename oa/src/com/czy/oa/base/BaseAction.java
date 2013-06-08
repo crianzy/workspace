@@ -5,6 +5,7 @@ import java.lang.reflect.ParameterizedType;
 import javax.annotation.Resource;
 
 import com.czy.oa.service.DepartmentService;
+import com.czy.oa.service.PrivilegeService;
 import com.czy.oa.service.RoleService;
 import com.czy.oa.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
@@ -20,6 +21,8 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
 	protected DepartmentService departmentService;
 	@Resource
 	protected UserService userService;
+	@Resource
+	protected PrivilegeService privilegeService;
 
 	protected T model;
 

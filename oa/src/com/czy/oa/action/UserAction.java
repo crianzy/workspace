@@ -54,7 +54,7 @@ public class UserAction extends BaseAction<User> {
 
 		List<Role> roleList = null;
 		try {
-			roleList = roleService.getByids(roleIds);
+			roleList = roleService.getByIds(roleIds);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -109,7 +109,7 @@ public class UserAction extends BaseAction<User> {
 		Department department = departmentService.getById(departmentId);
 		user.setDepartment(department);
 		// >> 关联的岗位
-		List<Role> roleList = roleService.getByids(roleIds);
+		List<Role> roleList = roleService.getByIds(roleIds);
 		user.setRoles(new HashSet<Role>(roleList));
 
 		// 3，更新到数据库

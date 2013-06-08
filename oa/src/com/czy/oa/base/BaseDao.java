@@ -11,7 +11,7 @@ public interface BaseDao<T> {
 	
 	public T getById(Serializable id);
 	
-	public List<T> getByids(Long [] ids);
+	public List<T> getByIds(Long [] ids);
 	
 	public void save(T t);
 	
