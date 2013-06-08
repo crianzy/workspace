@@ -63,13 +63,15 @@ public class RoleAction extends BaseAction<Role> {
 	}
 
 	/** 设置权限页面 */
-	public String setPrivilegeUI() throws Exception {
+	public String setPrivilegeUI() {
 		// 准备数据
 		// 设置当前角色名称
 		Role role = roleService.getById(model.getId());
 		ActionContext.getContext().put("role", role);
-		List<Privilege> privilegeList = privilegeService.findAll();
-		ActionContext.getContext().put("privilegeList", privilegeList);
+		List<Privilege> topPrivilegeList = privilegeService.findTop();
+		ActionContext.getContext().put("topPrivilegeList", topPrivilegeList);
+		/*List<Privilege> privilegeList = privilegeService.findAll();
+		ActionContext.getContext().put("privilegeList", privilegeList);*/
 		// 准备回显数据
 		privilegeIds = new Long[role.getPrivileges().size()];
 		int index = 0;

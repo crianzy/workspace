@@ -11,10 +11,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <title>My JSP 'setPrivilegeUI.jsp' starting page</title>
 	<%@ include file="/WEB-INF/jsp/public/common.jsp" %>
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
+	<script type="text/javascript" src="script/jquery_treeview/jquery.treeview.js"></script>
+	<link rel="stylesheet" type="text/css" href="script/jquery_treeview/jquery.treeview.css">
+	<link rel="stylesheet" type="text/css" href="style/blue/file.css">
+	<script type="text/javascript">
+		$(function(){
+			$("[name=privilegeIds]").click(function(){
+				// 自己选中或取消时，把所有的下级权限也都同时选中或取消
+				$(this).siblings("ul").find("input").attr("checked", this.checked);
+				
+				// 当选中一个权限时，也要同时选中所有的直系上级权限
+				if(this.checked){
+					$(this).parents("li").children("input").attr("checked",this.checked);
+				}else{// 当取消一个权限时，同级没有选中的权限了，就也取消他的上级权限，再向上也这样做。
+					if( $(this).parent().siblings("li").children("input:checked").size() == 0){
+						$(this).parent().parent().siblings("input").attr("checked",false);
+						var start = $(this).parent().parent();
+						if( start.parent().siblings("li").children("input:checked").size() == 0){
+							start.parent().parent().siblings("input").attr("checked",false);
+						}
+					}
+				}
+			});
+		});	
+	
+	</script>
   </head>
   
 <body>
@@ -57,24 +78,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<tr class="TableDetail1">
 							<!-- 显示权限树 -->
 							<td>
-	<!--  使用Struts2的自定义标签					
-	<s:checkboxlist list="#privilegeList" name="privilegeIds" listKey="id" listValue="name"/>
-	 -->
-
-<s:iterator value="#privilegeList">
-	<input type="checkbox"  name="privilegeIds" value="${id }" id="cb_${id }"
-		<s:property value="%{id in privilegeIds ? 'checked' : ''}"/>
-	/>
-	<label for="cb_${id}">${name}</label>
-	<br/>
-</s:iterator>
+<ul id="root">
+	<s:iterator value="#topPrivilegeList">
+		<li>
+			
+			<input type="checkbox" name="privilegeIds" id="cb_${id }" value="${id }" <s:property value=" id in privilegeIds ? 'checked':'' "/> />
+			<label for="cb_${id }"><span class="folder"> ${name }</span></label>
+			<ul>
+				<s:iterator value="children">
+					<li>
+						<input type="checkbox" name="privilegeIds" id="cb_${id }" value="${id }" <s:property value=" id in privilegeIds ? 'checked':'' "/>/>
+						<label for="cb_${id }"><span class="folder"> ${name }</span></label>
+						<ul>
+							<s:iterator value="children">
+								<li>
+									<input type="checkbox" name="privilegeIds" id="cb_${id }" value="${id }" <s:property value=" id in privilegeIds ? 'checked':'' "/>/>
+									<label for="cb_${id }"><span class="folder"> ${name }</span></label>
+								</li>
+							</s:iterator>
+						</ul>
+					</li>
+				</s:iterator>
+			</ul>
+		</li>
+	</s:iterator>
+</ul>
 							</td>
 						</tr>
 					</tbody>
                 </table>
             </div>
         </div>
-        
+	<script>
+		$("#root").treeview();
+	</script>   
         <!-- 表单操作 -->
         <div id="InputDetailBar">
             <input type="image" src="style/images/save.png"/>

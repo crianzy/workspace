@@ -3,27 +3,27 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="com.czy.oa.domain"
+<hibernate-mapping package="com.czy.oa.domain" 
 	default-lazy="false">
 	<class name="Privilege">
 		<id name="id">
 			<generator class="native"></generator>
 		</id>
-		<property name="url"/>
-		<property name="name"/>
-		<property name="icon"/>
+		<property name="url" />
+		<property name="name" />
+		<property name="icon" />
 		<!-- role 属性，本类与 Role 的多对多的关系 -->
 		<set name="roles" table="oa_role_privilege">
 			<key column="privilegeId"></key>
-			<many-to-many class="Role" column="roleId" ></many-to-many>
+			<many-to-many class="Role" column="roleId"></many-to-many>
 		</set>
-		
+
 		<!-- parent 属性， 本类与Privilege（上级）的多对一关系 -->
-		<many-to-one name="parent" class="Privilege"></many-to-one>		
+		<many-to-one name="parent" class="Privilege" column="parentID"></many-to-one>
 		<!-- children 属性， 本类与Privilege （下级）的一对多关系 -->
 		<set name="children">
 			<key column="parentID"></key>
-			<one-to-many class="Privilege"/>
+			<one-to-many class="Privilege" />
 		</set>
 	</class>
 </hibernate-mapping>
