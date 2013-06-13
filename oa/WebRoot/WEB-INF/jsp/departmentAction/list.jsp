@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     <title>部门列表</title>
-    <%@include file="/WEB-INF/jsp/public/common.jsp" %>
+    <%@include file="/WEB-INF/jsp/public/common.jspf" %>
     <script type="text/javascript">
     </script>
 </head>

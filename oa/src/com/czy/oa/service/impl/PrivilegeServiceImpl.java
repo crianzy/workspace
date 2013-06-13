@@ -11,9 +11,9 @@ import com.czy.oa.domain.Privilege;
 import com.czy.oa.service.PrivilegeService;
 
 @Service
+@SuppressWarnings("unchecked")
 public class PrivilegeServiceImpl extends BaseDaoImpl<Privilege> implements PrivilegeService {
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Privilege> findTop() {
 		Session session = getSession();
@@ -23,7 +23,6 @@ public class PrivilegeServiceImpl extends BaseDaoImpl<Privilege> implements Priv
 		return top;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Privilege> findChildren(Serializable id) {
 		Session session = getSession();
@@ -32,6 +31,15 @@ public class PrivilegeServiceImpl extends BaseDaoImpl<Privilege> implements Priv
 					.setParameter(0, id)//
 					.list();
 		return top;
+	}
+
+	@Override
+	public List<String> getAllprivilegeUrl() {
+		Session session = getSession();
+		List<String> urls = null;
+		urls = session.createQuery("SELECT p.url FROM Privilege p WHERE p.url IS NOT NULL")//
+					.list();
+		return urls;
 	}
 
 }

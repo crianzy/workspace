@@ -12,4 +12,6 @@ public interface PrivilegeService extends BaseDao<Privilege> {
 	
 	public List<Privilege> findChildren(Serializable id);
 
+	public List<String> getAllprivilegeUrl();
+
 }

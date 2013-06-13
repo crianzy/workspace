@@ -126,6 +126,35 @@ public class UserAction extends BaseAction<User> {
 		return "toList";
 	}
 
+	/** 登录页面 */
+	public String loginUI() throws Exception {
+		return "loginUI";
+	}
+
+	/** 登录 */
+	public String login() throws Exception {
+		User user = null;
+		try {
+			user = userService.getByLoginNamePassword(model.getLoginName(),
+					model.getPassword());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (user == null) {
+			addFieldError("login", "用户或密码不正确");
+			return "loginUI";
+		} else {
+			ActionContext.getContext().getSession().put("user", user);
+			return "toIndex";
+		}
+	}
+
+	/** 退出 */
+	public String logout() throws Exception {
+		ActionContext.getContext().getSession().remove("user");
+		return "logout";
+	}
+
 	// -------------------------------------------------
 	public Long getDepartmentId() {
 		return departmentId;

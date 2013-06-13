@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>My JSP 'setPrivilegeUI.jsp' starting page</title>
-	<%@ include file="/WEB-INF/jsp/public/common.jsp" %>
+	<%@ include file="/WEB-INF/jsp/public/common.jspf" %>
 	<script type="text/javascript" src="script/jquery_treeview/jquery.treeview.js"></script>
 	<link rel="stylesheet" type="text/css" href="script/jquery_treeview/jquery.treeview.css">
 	<link rel="stylesheet" type="text/css" href="style/blue/file.css">

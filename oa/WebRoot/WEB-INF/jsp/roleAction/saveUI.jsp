@@ -12,7 +12,7 @@
 <head>
 <base href="<%=basePath%>">
 	<title>岗位设置</title>
-    <%@include file="/WEB-INF/jsp/public/common.jsp" %>
+    <%@include file="/WEB-INF/jsp/public/common.jspf" %>
     <script type="text/javascript"> 
     </script>
 </head>

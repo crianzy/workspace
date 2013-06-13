@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="com.czy.oa.domain" default-lazy="false">
+<hibernate-mapping package="com.czy.oa.domain"  >
 	
 	<class name="Role">
 		<id name="id">
@@ -19,7 +19,7 @@
 		</set>
 		
 		<!-- privilege 属性， 本类与Privilege 的多对多关系 -->
-		<set name="privileges" table="oa_role_privilege">
+		<set name="privileges" table="oa_role_privilege" lazy="false">
 			<key column="roleId"></key>
 			<many-to-many class="Privilege" column="privilegeId"></many-to-many>
 		</set>

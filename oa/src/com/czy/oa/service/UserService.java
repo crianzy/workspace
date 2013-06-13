@@ -5,4 +5,6 @@ import com.czy.oa.domain.User;
 
 public interface UserService extends BaseDao<User>{
 
+	User getByLoginNamePassword(String loginName, String password);
+
 }

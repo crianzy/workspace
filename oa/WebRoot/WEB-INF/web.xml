@@ -13,6 +13,18 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+	<listener>
+		<listener-class>com.czy.oa.listener.InitServletContextListener</listener-class>
+	</listener>
+	<!-- 配置Spring的OpenSessionInViewFilter，以解决懒加载异常的问题 -->
+	<filter>
+		<filter-name>OpenSessionInViewFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenSessionInViewFilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
 	<!-- 配置struts的过滤器 -->
 	<filter>
 		<filter-name>struts2</filter-name>

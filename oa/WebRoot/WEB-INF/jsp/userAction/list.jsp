@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     <title>用户列表</title>
-    <%@include file="/WEB-INF/jsp/public/common.jsp" %>
+    <%@include file="/WEB-INF/jsp/public/common.jspf" %>
     <script type="text/javascript">
     </script>
 </head>
@@ -56,6 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </td>
                 <td>${description}&nbsp;</td>
                 <td>
+                	&nbsp;
                 	<s:a action="userAction_delete?id=%{id}" onclick="return delConfirm()">删除</s:a>
                     <s:a action="userAction_editUI?id=%{id}">修改</s:a>
 					<s:a action="userAction_initPassword?id=%{id}" onclick="return window.confirm('您确定要初始化密码为1234吗？')">初始化密码</s:a>

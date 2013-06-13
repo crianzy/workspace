@@ -6,19 +6,38 @@
 <struts>
 
     <constant name="struts.enable.DynamicMethodInvocation" value="true" />
-    <constant name="struts.devMode" value="true" />
+    <constant name="struts.devMode" value="false" />
 
     <package name="default" namespace="/" extends="struts-default">
+		<!-- 要放在最上边 不然报错 -->
+		<interceptors>
+			<!-- 声明一个拦截器 -->
+			<interceptor name="checkePrivilege" class="com.czy.oa.interceptor.CheckPrivilegeInterceptor"></interceptor>
 
+			<!-- 重新定义defaultStack拦截器栈，需要先判断权限 -->
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="checkePrivilege" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		
         <default-action-ref name="index" />
-
-
+        <global-results>
+        	<result name="noPrivilegeError">/noPrivilegeError.jsp</result>
+        	<result name="loginUI">/WEB-INF/jsp/userAction/loginUI.jsp</result>
+        </global-results>
         <global-exception-mappings>
             <exception-mapping exception="java.lang.Exception" result="error"/>
         </global-exception-mappings>
+        
+        
 
         <action name="index" class="indexAction">
         	<result>/index.jsp</result>
+        </action>
+        <!-- 主页布局 -->
+        <action name="homeAction_*" class="homeAction" method="{1}">
+			<result name="{1}">/WEB-INF/jsp/homeAction/{1}.jsp</result>        
         </action>
         
         <!-- 岗位管理 -->
@@ -43,9 +62,10 @@
         	<result name="list">/WEB-INF/jsp/userAction/list.jsp</result>
         	<result name="saveUI">/WEB-INF/jsp/userAction/saveUI.jsp</result>
         	<result name="toList" type="redirectAction">userAction_list</result>
+        	<result name="logout">/WEB-INF/jsp/userAction/logout.jsp</result>
+        	<result name="toIndex" type="redirect">/index.jsp</result>
         </action>
     </package>
 
     <!-- Add packages here -->
-
 </struts>
