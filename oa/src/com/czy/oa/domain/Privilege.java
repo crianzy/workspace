@@ -1,10 +1,12 @@
 package com.czy.oa.domain;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Privilege {
+public class Privilege implements Serializable{
 
+	private static final long serialVersionUID = -3915702073200305467L;
 	private Long id;
 	private String url;
 	private String name;

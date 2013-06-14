@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!-- 表单内容显示 -->
         <div class="ItemBlockBorder">
             <div class="ItemBlock">
-                <table cellpadding="0" cellspacing="0" class="mainForm">
+                <table cellpadding="0" cellspacing="0" class="mainForm ">
                     <tr><td width="100">所属部门</td>
                         <td>
                         	<s:select list="#departmentList" name="departmentId" cssClass="SelectStyle"
@@ -47,36 +47,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </tr>
                     <tr><td>登录名</td>
                         <td>
-                        	<s:textfield name="loginName" cssClass="InputStyle"></s:textfield>
+                        	<s:textfield name="loginName" cssClass="required {minlength:4, messages:{required:'请输入用户名！！！'}} InputStyle "></s:textfield>
 							（登录名要唯一）
 						</td>
                     </tr>
                     <tr><td>姓名</td>
                         <td>
-                        	<s:textfield name="name" cssClass="InputStyle"></s:textfield>
+                        	<s:textfield name="name" cssClass="required { minglength:4, messages:{required:'请输入姓名！！！' }} InputStyle "></s:textfield>
                         </td>
                     </tr>
 					<tr><td>性别</td>
                         <td>
                         	
-							<s:radio name="gender" list="#{'男':'男', '女':'女'}"></s:radio>
+							<s:radio name="gender" list="#{'男':'男', '女':'女'}" ></s:radio>
                         	
                         	<%-- <s:radio list="gender" list="%{ {'男','女'} }"></s:radio> --%>
 						</td>
                     </tr>
 					<tr><td>联系电话</td>
                         <td>
-                        	<s:textfield name="phoneNumber" cssClass="InputStyle"></s:textfield>
+                        	<s:textfield name="phoneNumber" cssClass="InputStyle  InputStyle required { digits:true, messages:{required:'请输入联系电话' }"></s:textfield>
                         </td>
                     </tr>
                     <tr><td>E-mail</td>
                         <td>
-                        	<s:textfield name="email" cssClass="InputStyle"></s:textfield>
+                        	<s:textfield name="email" cssClass="InputStyle required{email:true}"></s:textfield>
                         </td>
                     </tr>
                     <tr><td>备注</td>
                         <td>
-                        	<s:textarea name="description" cssClass="TextareaStyle"></s:textarea>
+                        	<s:textarea name="description" cssClass="TextareaStyle "></s:textarea>
                         </td>
                     </tr>
                 </table>

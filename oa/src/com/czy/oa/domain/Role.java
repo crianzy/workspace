@@ -1,5 +1,6 @@
 package com.czy.oa.domain;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,8 +10,9 @@ import java.util.Set;
  * @author chen9_000
  * 
  */
-public class Role {
+public class Role implements Serializable{
 
+	private static final long serialVersionUID = -371052990947343772L;
 	private Long id;
 	private String name;
 	private String description;
